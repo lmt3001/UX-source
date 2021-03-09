@@ -1,0 +1,180 @@
+#! /bin/sh -f
+setenv LSF_PROJECT SV
+source /common/lsftool/RBS/dotfiles/lsf_cshrc_cbs
+:
+#==============================================================================================================================
+#                                                    THOLE OWNER
+#==============================================================================================================================
+
+
+
+umask 022
+set dedisv = ( `grep -e "$USER" /common/lsftool/RBS/attrib/SP_HOSTS_DIR/* | awk -F '/|:' '{print $(NF-1)}' | sort -u` )
+set date = `date +"%A-%d/%m/20%y "`
+
+# +--------------------------------------------------------------------------------+
+# |------------------------------ Short keyboard ------------------------------------|
+# +--------------------------------------------------------------------------------+
+### tu dong show danh sach file trong folder
+set autolist
+set complete = enhance
+alias l 'll -hlrt'
+alias df 'df -h'
+alias d 'du -csh'
+alias j 'bjobs'
+alias mr memreport
+alias lr 'll -hlrt'
+alias smy 'source ~/.mycshrc'
+alias cprf 'cp -rf'
+alias cpp 'rsync -aPWh'
+alias e9 'echo "df -h | grep end9" \
+df -h | grep end9'
+alias e8 'echo "df -h | grep end8" \
+df -h | grep end8'
+alias p 'echo pwd \
+wd'
+alias cd $1 'cd $1\
+             ls -hlrt'
+
+alias show $1 'printf $1'
+
+# +--------------------------------------------------------------------------------+
+# |------------------------------ Source App ------------------------------------|
+# +--------------------------------------------------------------------------------+
+
+#alias dve16 'source /common/appl/Env/Synopsys/vcs-mx_vL-2016.06-SP2; bs -os RHEL6 -m HOSTGR_L -t 23:00 -spec "cpuf>200" -M 4000 dve -full64'
+alias dve16 'source /common/appl/Env/Synopsys/vcs-mx_vL-2016.06-SP2; bs -m HOSTGR_L -t 23:00 -spec "cpuf>200" -M 4000 dve -full64'
+alias openicc2 '/shsv/Backend/TRAINING/32G/user/2807_ThoLe/lab/go_iccII_shell.csh'
+alias dcshellopen 'source /common/appl/Env/Synopsys/syn_vL-2016.03-SP3;bs dc_shell-xg-t'
+alias foxit "/common/appletFoxit-Reader//FoxitReader"
+alias multi_window "/common/appl/terminator/0.14/terminator"
+alias pdf     '/common/appl/Foxit-Reader/FoxitReader \!* & '
+alias vcs16 'source /common/appl/Env/Synopsys/vcs-mx_vL-2016.06-SP2'
+alias vcs09 'source /common/appl/Env/Synopsys/vcs-mx_vD-2009.12-4'
+#  bs -os RHEL5 -m HOSTGR_L -t 23:00 vcs -R -debug_pp testbench.v -full64
+alias ICC2 'bs -m HOSTGR_L -os "RHEL5 RHEL6" -M 16000 -source /common/appl/Env/Synopsys/icc2_vL-2016.03-SP5-2 icc2_shell -64'
+
+# +--------------------------------------------------------------------------------+
+# |------------------------------ Some thing ------------------------------------|
+# +--------------------------------------------------------------------------------+
+alias webtran "ftp 172.29.138.247 "
+alias wt 'echo How to access webtran: \
+echo put ftp 172.29.138.247 to terminal \
+echo put wtcommon \
+echo Pass: Pass1234 \
+echo get filename.gz'
+
+set my_ip=`/sbin/ifconfig | awk '/inet\ addr\:/ {print}' | awk '/Bcast\:/ {print}' | sed 's/:/ /g' | awk '{print $3}'`
+alias ip 'echo $my_ip'
+
+# +--------------------------------------------------------------------------------+
+# |------------------------------ Directory  ------------------------------------|
+# +--------------------------------------------------------------------------------+
+alias perldir 'cd /shsv/Backend/TRAINING/Training_EPLT/user/2807_thole/Perl'
+alias all 'cd /shsv/Backend/TRAINING/Training_EPLT/user/2807_thole'
+alias icclab 'cd /shsv/Backend/TRAINING/Training_EPLT/user/2807_thole/ICCII_Labs/01.LAB_BLOCK_LEVEL_IMPLEMENTATION/02.Database/IC_Compiler_II_Block-level_Implementation_2015.06-SP5'
+alias iccdir ' cd /shsv/Backend/TRAINING/32G/comSource/ICCII_Labs/01.LAB_BLOCK_LEVEL_IMPLEMENTATION/02.Database/IC_Compiler_II_Block-level_Implementation_2015.06-SP5'
+alias tool ' cd /common/appl/Env/Synopsys'
+
+set prompt = "%{\033[0;35m%}[%{\033[0;31m%}%/%{\033[0;34m%}] \n%{\033[50m%}`whoami` %{\033[36m%}@%m%{\033[32m%} %c =>>:%{\033[0;0m%} %{\033[0m%}"
+
+#===========Tool DESIGN LAYOUT =================
+#alias ICC1_2007 'source /common/appl/Env/Synopsys/icc_vZ-2007.03-SP4 ; bs -os "SLES10_0 REDHATE5_0" -M 16000  icc_shell'
+#alias ICC1      'source /common/appl/Env/Synopsys/icc_vK-2015.06-SP1 ; bs -os "SLES10_0 REDHATE5_0" -M 32000  icc_shell'
+
+#===========Tool DESIGN LAYOUT =================
+#alias ICC1_2007 'source /common/appl/Env/Synopsys/icc_vZ-2007.03-SP4 ; bs -os "SLES10_0 REDHATE5_0" -M 16000  icc_shell'
+#alias ICC1      'source /common/appl/Env/Synopsys/icc_vK-2015.06-SP1 ; bs -os "SLES10_0 REDHATE5_0" -M 32000  icc_shell'
+
+
+# Begin
+alias search      'egrep -irn --color'
+alias kdiff       "/common/appl/kdiff3-32bit/bin/kdiff3 &"
+# +--------------------------------------------------------------------------------+
+# |------------------------------ Sort key  ------------------------------------|
+# +--------------------------------------------------------------------------------+
+set cmw = "/common/work/thole/"
+alias v 'vi'
+alias la       'clear; ll -a'
+alias le       'less'
+#alias e        'exit'
+alias ..       'cd ..'
+alias .2      'cd ../..'
+alias .3      'cd ../../..'
+alias .4     'cd ../../../..'
+alias rf       'rm -rf'
+alias lr       'clear; ll -lrt'
+alias ne      'source ~/script_design/nen.cmd'
+alias lic      '~/chk_lic_v1.6.csh ICCompilerII-4'
+alias checkjob '~/script_design/apjobs'
+
+alias bl      'cd .. | ll'
+alias lg      'll | egrep -i --color'
+alias gg      'grep "" * | grep'
+alias grep    'egrep -i --color'
+alias desk    'cd ~/Desktop'
+alias dict    '/common/appl/stardict/bin/stardict &'
+alias kate    '/usr/bin/kate &'
+alias terminal '/common/appl/terminator/0.14/terminator -T THOLE_BE2  & '
+alias link    'ln -sf'
+
+# +--------------------------------------------------------------------------------+
+# |------------------------------ Extract ins  ------------------------------------|
+# +--------------------------------------------------------------------------------+
+alias nen 'echo "->" tar xvf file.tar : giai nen \
+					 echo "->" tar xvfz file.tar.gz : giai nen tar.gz \
+					 echo "->" tar cvfz file.tar.gz folder : nen thu muc \
+					 echo "->" tar cvf file.tar file1 file2 : nen 2 file vo 1 file \
+					 echo "->" gzip file.txt : nen file.txt.gz \
+					 echo "->" gunzip file.txt.gz : giai nen \
+					 echo "->" tar -xjf file.tar.bz2 -C dir : giai nen tar.bz2 \
+           echo "->" tar -xzf file.tgz : giai nen .tgz \
+           echo "->" tar -cjf file.tar.bz2 file : nen tar.bz2 \
+           echo "->" ###gtar cvfz folder.tgz compress folder \
+           echo "->" ###gtar xvfz folder.tgz decompress folder'
+
+
+
+#####################################################################
+# Open file
+#####################################################################
+alias oo        '/common/appl/OO/OO_4.0.1-32bit/program/soffice \!* &'
+alias kon       'konqueror &'
+################################################################################
+alias calendar  '/usr/bin/korganizer &'
+alias paint     '/usr/bin/kolourpaint &'
+alias mail      '/common/appl/Thunderbird/6.0/thunderbird &'
+alias ff        '/common/appl/Firefox/15.0/firefox &'
+alias map       '/common/appl/freemind/0.8.1/freemind.sh &' 
+alias firefox   '/common/appl/Firefox/15.0/firefox'
+alias it        '/common/appl/Firefox/15.0/firefox 172.29.139.11/portal25/'
+alias silkportal '/common/appl/Firefox/15.0/firefox 172.29.139.61/'
+alias dms       '/common/appl/Firefox/15.0/firefox 172.29.138.11/dms/browse.php?sess=9e36569bff91790965042a26b6ad4657&parent=1'
+alias thunderbird '/common/appl/Thunderbird/8.0/thunderbird'
+alias dictionary '/common/appl/Firefox/15.0/firefox 172.29.139.11:8080 &'
+alias dictionary2 '/common/appl/stardict/bin/stardict'
+alias mutiwindow "/common/appl/terminator/0.14/terminator &"
+alias ksn 'ksnapshot &'
+
+
+#Login without password:
+alias login_wo_pass_s1 'ssh-keygen -t rsa'
+alias login_wo_pass_s2 'cd ~/.ssh'
+alias login_wo_pass_s3 'cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys'
+
+#run step 1, enter 2 times => run step 2 => run step 3
+
+alias csh 'source ~/.mycshrc'
+alias vicsh 'vi ~/.mycshrc'
+alias login_wo_pass_s1 'ssh-keygen -t rsa'
+alias login_wo_pass_s2 'cd ~/.ssh'
+alias login_wo_pass_s3 'cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys'
+
+#run step 1, enter 2 times => run step 2 => run step 3
+
+alias csh 'source ~/.mycshrc'
+alias vicsh 'vi ~/.mycshrc'
+
+# Online Destination Board
+source /home/Common/Meeting/Eng_General/Online_Destination_Board/3F/user/alias.seat
+
