@@ -1,0 +1,17 @@
+BAN CRACK NAY CHI HOAT DONG CHO PHIEN BAN AutoMouseKey v6.1.5.2 and for AutoHotkey 3.0.8.8
+
+Cài đặt
+
+Bước 1: Chạy file cai trong thu muc 1.CaiDat/AutoMouseKey 6152.exe
+Bước 2: Copy file Crack/AutoMouseKey.exe vào đường dẫn C:\Program Files (x86)\Automatic Mouse and Keyboard (Chọn ghi đè nếu 1 cửa sổ yêu cầu hỏi)
+
+XONG
+
+Cách biên dịch file .exe 
+
+Bước 1. Compile các đoạn lệnh thành file exe (through AutoMouseKey.exe) và đặt tên (ví dụ: mmo2013.exe)
+Bước 2. Chạy AutoMouse Patcher
+Bước 3. Chọn file(mmo2013.exe)
+Bước 4. Bấm patch
+
+XONG!
